@@ -1,16 +1,14 @@
-# This is a sample Python script.
+import requests
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+pixela_endpoint = "https://pixe.la/v1/users"
 
+user_params = {
+    "token": "osghfugofnbf8HJ7gfg",
+    "username": "elgo",
+    "agreeTermsOfService": "yes",
+    "notMinor": "yes",
+}
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+response = requests.post(url=pixela_endpoint, json=user_params)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(response.text)
