@@ -1,4 +1,6 @@
 import requests
+from datetime import datetime
+
 
 pixela_endpoint = "https://pixe.la/v1/users"
 
@@ -28,5 +30,14 @@ graph_configs = {
     "color": "shibafu"
 }
 
-response = requests.post(url=graph_endpoints, json=graph_configs, headers=headers)
-print(response.text)
+#response = requests.post(url=graph_endpoints, json=graph_configs, headers=headers)
+#print(response.text)
+
+# Post value to the graph
+today = datetime.now()
+value_dict = {
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "12"
+}
+response = requests.put(url=f"{graph_endpoints}/{graph_configs['id']}/{today.strftime(%Y%m%d)}", json = value_dict, headers=headers)
+print(response)
